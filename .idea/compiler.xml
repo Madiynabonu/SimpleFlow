@@ -16,6 +16,11 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="bank-service" target="11" />
+      <module name="config-service" target="17" />
+      <module name="details-service" target="11" />
+      <module name="documents-service" target="11" />
+      <module name="server-registry" target="17" />
+      <module name="SimpleFlow" target="11" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
