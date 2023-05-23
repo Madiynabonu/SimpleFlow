@@ -8,15 +8,14 @@
         <outputRelativeToContentRoot value="true" />
         <module name="server-registry" />
         <module name="bank" />
-        <module name="config-service" />
         <module name="documents-service" />
+        <module name="config-service" />
         <module name="details-service" />
         <module name="out" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="bank-service" target="11" />
-      <module name="config-service" target="17" />
       <module name="details-service" target="11" />
       <module name="documents-service" target="11" />
       <module name="server-registry" target="17" />
