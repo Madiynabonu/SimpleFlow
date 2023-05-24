@@ -47,12 +47,59 @@ public class BankServiceApplication {
 @RequestMapping("/api/posts")
 @RequiredArgsConstructor
 @Slf4j
-class BankController{
-    private  final BankRepository bankRepository;
+class BankController {
+    private final BankRepository bankRepository;
     private final BankDetailsClient bankDetailsClient;
     private final DocumentClient documentClient;
 
+    @GetMapping
+    public List<Bank> getAll() {
+        return bankRepository.findAll();
+    }
 
+    @GetMapping("/{id}")
+    public Bank get(@PathVariable Long id) {
+        return bankRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Bank not found: %s ".formatted(id)));
+    }
+
+    @GetMapping("/{id}/details")
+    public BankDetail getDetail(@PathVariable Long id) {
+        log.info("Getting Bank Details with id : {}", id);
+        var bank = bankRepository.findById(id).orElseThrow(() -> new RuntimeException("Bank not found : %s".formatted(id)));
+
+        return new BankDetail(
+                bank.getId(),
+                bank.getName(),
+                bank.getCode(),
+                bank.getAddress(),
+                bank.getPhoneNumber(),
+                bank.getEmail(),
+                bankDetailsClient.get(bank.getId()),
+                documentClient.getAllByBankId(bank.getId())
+        );
+
+
+    }
+
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable Long id) {
+        bankRepository.deleteById(id);
+    }
+
+    @PostMapping
+    public Bank create(@RequestBody BankCreateDTO dto){
+        var bank  = bankRepository.save(
+                new Bank(
+                        dto.name(),
+                        dto.code(),
+                        dto.address(),
+                        dto.phoneNumber(),
+                        dto.email()
+                )
+        );
+        return bank;
+    }
 }
 
 @Getter
@@ -65,12 +112,18 @@ class Bank {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String title;
-    private String description;
+    private String name;
+    private String code;
+    private String address;
+    private String phoneNumber;
+    private String email;
 
-    public Bank(String title, String description) {
-        this.title = title;
-        this.description = description;
+    public Bank(String name, String code, String address, String phoneNumber, String email) {
+        this.name = name;
+        this.code = code;
+        this.address = address;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
     }
 }
 
@@ -96,6 +149,7 @@ record BankDetail(
         Object body,
         List<Document> bankDocuments) {
 }
+
 record BankDetailsCreateDTO(
         Long bankId,
         String name,
@@ -104,10 +158,12 @@ record BankDetailsCreateDTO(
         String phoneNumber,
         String email) {
 }
-record Document( Long id,
- String title,
-         String description,
-         boolean deleted ){}
+
+record Document(Long id,
+                String title,
+                String description,
+                boolean deleted) {
+}
 
 
 @FeignClient(value = "${bank.details.service.baseUrl}")
