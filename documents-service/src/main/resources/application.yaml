@@ -2,9 +2,9 @@ server:
   port: 8095
 spring:
   application:
-    name: comment-service
+    name: document-service
   datasource:
-    url: jdbc:h2:file:./comment_db
+    url: jdbc:h2:file:./document_db
     username: sa
     password: sa
     driver-class-name: org.h2.Driver
@@ -24,7 +24,6 @@ management:
     sampling:
       probability: 1.0
 
-# https://amithkumarg.medium.com/distributed-tracing-with-spring-boot-micrometer-opentelemetry-and-jaeger-fafd5c0bd282
 logging:
   pattern:
     level: '%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]'

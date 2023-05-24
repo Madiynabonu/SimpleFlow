@@ -1,13 +1,11 @@
-package dev.jlkeesh.commentsservice;
+package uz.devops.documentsservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class CommentsServiceApplicationTests {
-
+class DocumentsServiceApplicationTest {
     @Test
     void contextLoads() {
     }
-
 }
