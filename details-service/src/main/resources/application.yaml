@@ -3,7 +3,7 @@ spring:
     name: bank-details-service
   datasource:
     url: jdbc:h2:file:./bank_details_db
-    usernampoe: sa
+    username: sa
     password: sa
     driver-class-name: org.h2.Driver
   jpa:
