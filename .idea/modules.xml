@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/SimpleFlow.iml" filepath="$PROJECT_DIR$/SimpleFlow.iml" />
-      <module fileurl="file://$PROJECT_DIR$/details-service/details-service.iml" filepath="$PROJECT_DIR$/details-service/details-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/server-registry/server-registry.iml" filepath="$PROJECT_DIR$/server-registry/server-registry.iml" />
     </modules>
   </component>

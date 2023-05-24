@@ -17,7 +17,6 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="bank-service" target="11" />
-      <module name="details-service" target="11" />
       <module name="server-registry" target="17" />
       <module name="SimpleFlow" target="11" />
     </bytecodeTargetLevel>
@@ -25,6 +24,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="config-service" options="-parameters" />
+      <module name="details-service" options="-parameters" />
       <module name="documents-service" options="-parameters" />
       <module name="server-registry" options="-parameters" />
     </option>
