@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: bank-service
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8671/eureka
