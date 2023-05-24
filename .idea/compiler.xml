@@ -8,20 +8,20 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="server-registry" />
-        <module name="config-service" />
         <module name="documents-service" />
-        <module name="details-service" />
+        <module name="config-service" />
+        <module name="bank-service" />
         <module name="out" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="bank-service" target="11" />
       <module name="server-registry" target="17" />
       <module name="SimpleFlow" target="11" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="bank-service" options="-parameters" />
       <module name="config-service" options="-parameters" />
       <module name="details-service" options="-parameters" />
       <module name="documents-service" options="-parameters" />
